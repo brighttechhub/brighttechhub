@@ -11,7 +11,7 @@
       padding: 0;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f4f4;
       color: #333;
       line-height: 1.6;
@@ -19,8 +19,22 @@
     header {
       background-color: #0059ff;
       color: #fff;
-      padding: 40px 20px;
+      padding: 40px 20px 20px;
       text-align: center;
+      position: relative;
+    }
+    .logo {
+      width: 120px;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
     nav {
       background-color: #003cb3;
@@ -34,11 +48,19 @@
       margin: 10px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00;
     }
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
     }
     ul {
       list-style-type: disc;
@@ -69,6 +91,7 @@
 </head>
 <body>
   <header>
+    <img src="file_00000000d9cc61f980953af898f72576.png" alt="BrightTechHub Logo" class="logo">
     <h1>BrightTechHub</h1>
     <p>Empowering Your Digital Future</p>
   </header>
@@ -93,10 +116,10 @@
   <div class="container" id="services">
     <h2>Our Services</h2>
     <ul>
-      <li>Website Development</li>
-      <li>Mobile App Development</li>
-      <li>Cloud and DevOps</li>
-      <li>AI and Data Analytics</li>
+      <li>🌐 Website Development</li>
+      <li>📱 Mobile App Development</li>
+      <li>☁️ Cloud and DevOps</li>
+      <li>🤖 AI and Data Analytics</li>
     </ul>
   </div>
 
