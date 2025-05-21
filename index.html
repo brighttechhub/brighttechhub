@@ -89,14 +89,13 @@
 
     .green-card {
       background: #003300;
-      border: 1px solid #006600;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 15px;
       padding: 30px;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+      box-shadow: 0 0 15px rgba(0, 77, 0, 0.8);
       margin-bottom: 40px;
-      color: #ffffff;
+      color: white;
       transition: transform 0.3s ease;
-      position: relative;
     }
 
     .green-card:hover {
@@ -104,22 +103,12 @@
       box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
     }
 
-    .green-card h2 {
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
-
-    .green-card ul {
-      padding-left: 20px;
-    }
-
-    .green-card li {
-      margin-bottom: 10px;
-    }
-
+    .green-card h2,
+    .green-card p,
+    .green-card ul,
+    .green-card li,
     .green-card a {
-      color: #ccffcc;
-      text-decoration: underline;
+      color: white;
     }
 
     .cta-btn {
@@ -131,17 +120,12 @@
       padding: 12px 25px;
       border-radius: 30px;
       text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .cta-btn.active {
-      background: #004d00;
-      color: white;
-      border: 2px solid white;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .cta-btn:hover {
-      transform: scale(1.05);
+      background: #e0e0e0;
+      transform: translateY(-3px);
     }
 
     .toggle-btn {
@@ -229,7 +213,6 @@
   </style>
 </head>
 <body>
-
   <div id="preloader"></div>
 
   <header>
@@ -240,14 +223,16 @@
     <a href="#home">HOME</a>
     <a href="#about">ABOUT</a>
     <a href="#services">SERVICES</a>
+    <a href="#certificates">CERTIFICATES</a>
+    <a href="#founder">FOUNDER</a>
     <a href="#contact">CONTACT</a>
   </nav>
 
   <section id="home" class="container">
-    <div class="green-card">
+    <div class="green-card" data-aos="fade-up">
       <h2><i class="fas fa-rocket"></i> Welcome to BrightTechHub</h2>
-      <p>We are a passionate technology team committed to building powerful and reliable digital solutions. BrightTechHub helps businesses thrive by delivering modern, scalable, and innovative software tailored to their goals.</p>
-      <a href="#contact" class="cta-btn" id="startBtn">Get Started 🚀</a>
+      <p>BrightTechHub is your trusted partner in building future-ready tech skills. We specialize in delivering expert-led training in both software and hardware applications. Whether you're a student, graduate, or working professional, our programs are designed to empower you with hands-on experience in real-world technologies.</p>
+      <a href="#contact" class="cta-btn">Join Our Training Program 🚀</a>
     </div>
   </section>
 
@@ -267,6 +252,25 @@
         <li>☁️ Cloud and DevOps</li>
         <li>🤖 AI and Data Analytics</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="certificates" class="container">
+    <div class="green-card" data-aos="zoom-in">
+      <h2><i class="fas fa-certificate"></i> Certificates</h2>
+      <p>We are certified by:</p>
+      <ul>
+        <li>📜 MSME (Micro, Small and Medium Enterprises)</li>
+        <li>✅ ISO 9001:2015 – Quality Management System</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="founder" class="container">
+    <div class="green-card" data-aos="fade-up">
+      <h2><i class="fas fa-user-tie"></i> Our Founders</h2>
+      <p><strong>👨‍💼 Praveen B</strong> – Founder & CEO</p>
+      <p><strong>👩‍💼 Monisha V</strong> – Co-Founder & Director</p>
     </div>
   </section>
 
@@ -299,20 +303,9 @@
       document.body.classList.toggle('dark-mode');
     }
 
-    // Toggle button style on click
-    document.getElementById("startBtn").addEventListener("click", function(e) {
-      e.preventDefault();
-      this.classList.toggle("active");
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-
     window.addEventListener('load', function () {
       document.getElementById('preloader').style.display = 'none';
     });
   </script>
-
 </body>
 </html>
