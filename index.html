@@ -2,138 +2,317 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BrightTechHub</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS for scroll animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      line-height: 1.6;
+
+    html {
+      scroll-behavior: smooth;
     }
-    header {
-      background-color: #0059ff;
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffffff;
       color: #fff;
-      padding: 40px 20px 20px;
+      transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+
+    .dark-mode {
+      background-color: #0b0b0b;
+      color: #e0e0e0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    header {
+      background-color: white;
       text-align: center;
+      padding: 30px 10px;
+      border-bottom: 2px solid #004d00;
+    }
+
+    header img {
+      width: 400px;
+      max-width: 90%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #004d00;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #003300;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .green-card {
+      background: #003300;
+      border: 1px solid #006600;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+      margin-bottom: 40px;
+      color: #ffffff;
+      transition: transform 0.3s ease;
       position: relative;
     }
-    .logo {
-      width: 120px;
-      animation: float 3s ease-in-out infinite;
+
+    .green-card:hover {
+      transform: rotateY(2deg) rotateX(2deg);
+      box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+    }
+
+    .green-card h2 {
+      color: #ffffff;
       margin-bottom: 20px;
     }
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    nav {
-      background-color: #003cb3;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-    }
-    nav a {
-      color: #fff;
-      margin: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffcc00;
-    }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-    ul {
-      list-style-type: disc;
+
+    .green-card ul {
       padding-left: 20px;
     }
+
+    .green-card li {
+      margin-bottom: 10px;
+    }
+
+    .green-card a {
+      color: #ccffcc;
+      text-decoration: underline;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: white;
+      color: #004d00;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn.active {
+      background: #004d00;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #004d00;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .social-icons {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .social-icons a {
+      color: white;
+      background: #004d00;
+      padding: 10px;
+      border-radius: 50%;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #002200;
+    }
+
     footer {
-      background-color: #222;
+      background-color: #001a00;
       color: #fff;
       text-align: center;
       padding: 20px;
     }
-    .contact-info p {
-      margin: 10px 0;
+
+    #preloader {
+      position: fixed;
+      background: #0b0b0b;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
+
+    #preloader::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      border: 5px solid #00ff00;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
       }
+
       nav a {
-        display: block;
-        margin: 10px 0;
-      }
-      .container {
-        padding: 20px 10px;
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
+
+  <div id="preloader"></div>
+
   <header>
-    <img src="file_00000000d9cc61f980953af898f72576.png" alt="BrightTechHub Logo" class="logo">
-    <h1>BrightTechHub</h1>
-    <p>Empowering Your Digital Future</p>
+    <img src="brighttechhub-logo.png" alt="BrightTechHub Logo">
   </header>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#services">SERVICES</a>
+    <a href="#contact">CONTACT</a>
   </nav>
 
-  <div class="container" id="home">
-    <h2>Welcome to BrightTechHub</h2>
-    <p>We deliver cutting-edge technology solutions to drive your business forward.</p>
-  </div>
+  <section id="home" class="container">
+    <div class="green-card">
+      <h2><i class="fas fa-rocket"></i> Welcome to BrightTechHub</h2>
+      <p>We are a passionate technology team committed to building powerful and reliable digital solutions. BrightTechHub helps businesses thrive by delivering modern, scalable, and innovative software tailored to their goals.</p>
+      <a href="#contact" class="cta-btn" id="startBtn">Get Started 🚀</a>
+    </div>
+  </section>
 
-  <div class="container" id="about">
-    <h2>About Us</h2>
-    <p>BrightTechHub is a technology solutions provider focused on web development, mobile applications, and cloud services. Our mission is to empower businesses with innovative and scalable tech.</p>
-  </div>
+  <section id="about" class="container">
+    <div class="green-card" data-aos="fade-right">
+      <h2><i class="fas fa-info-circle"></i> About Us</h2>
+      <p>BrightTechHub is a technology solutions provider focused on web development, mobile applications, and cloud services. Our mission is to empower businesses with innovative and scalable tech.</p>
+    </div>
+  </section>
 
-  <div class="container" id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>🌐 Website Development</li>
-      <li>📱 Mobile App Development</li>
-      <li>☁️ Cloud and DevOps</li>
-      <li>🤖 AI and Data Analytics</li>
-    </ul>
-  </div>
+  <section id="services" class="container">
+    <div class="green-card" data-aos="fade-left">
+      <h2><i class="fas fa-cogs"></i> Our Services</h2>
+      <ul>
+        <li>🌐 Website Development</li>
+        <li>📱 Mobile App Development</li>
+        <li>☁️ Cloud and DevOps</li>
+        <li>🤖 AI and Data Analytics</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="container" id="contact">
-    <h2>Contact Us</h2>
-    <p>If you have any queries or need support, feel free to reach out.</p>
-    <div class="contact-info">
+  <section id="contact" class="container">
+    <div class="green-card" data-aos="zoom-in">
+      <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+      <p>If you have any queries or need support, feel free to reach out to us:</p>
       <p><strong>Email:</strong> <a href="mailto:brighttechhub@gmail.com">brighttechhub@gmail.com</a></p>
       <p><strong>Phone:</strong> <a href="tel:+919688339752">+91 9688339752</a></p>
     </div>
-  </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 BrightTechHub. All rights reserved.</p>
   </footer>
+
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Toggle button style on click
+    document.getElementById("startBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      this.classList.toggle("active");
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    window.addEventListener('load', function () {
+      document.getElementById('preloader').style.display = 'none';
+    });
+  </script>
+
 </body>
 </html>
